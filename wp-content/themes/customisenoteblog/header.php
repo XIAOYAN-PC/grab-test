@@ -84,22 +84,20 @@
           </div><!--.site-branding-->
 
           <div class="container">
-            <div id="header-form" style="margin-top:120px; ">
+            <div id="header-form">
               <form class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3 center-block text-left" style="float:none;">
                   <div id="selection-container">
-                    <div class="form-group">
-                      <div class="header-form-group" id="pickup-group">
-                        <label>PICP-UP</label>
-                        <input type="text" id="pickup-input" value="Changi Airport Private Terminal"/>
-                      </div>
+                    <div class="form-group header-form-group" id="pickup-group">
+                      <label>PICP-UP</label>
+                      <input type="text" id="pickup-input" value="Changi Airport Private Terminal"/>
                     </div>
-    
+
                     <div class="form-group header-form-group">
                       <label>DROP-OFF</label>
                       <input type="text" id="dropoff-input" value="Phuket Island Airport"/>
                     </div>
 
-                    <div class="header-inline-form-group" style="min-height:34px;">
+                    <div class="header-inline-form-group">
                       <div class="col-sm-6" style="border-right: 1px solid #CCD6DD;">
                           <input id="addon" type="hidden"/>
                           <div class="dropdown" style="width:100%; background-color:#F7F9FB ">
@@ -121,8 +119,7 @@
                     </div>
 
                   </div>
-                  <div class="form-group center-block text-center" style="margin-top: 80px;color:white; background: #33C066;height:46px;line-height:46px;
-border-radius: 3px;">
+                  <div class="form-group center-block text-center" id="sub-btn-container">
                     <div class="col-xs-6">Request a Jet</div><div class="col-xs-6"><b>$190</b></div>
                   </div>
 
