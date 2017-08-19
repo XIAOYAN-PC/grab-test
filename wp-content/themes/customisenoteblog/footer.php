@@ -43,13 +43,6 @@
 			Copyright Grab.com <?php echo date_i18n(__('Y','noteblog')); ?>. All Rights Reserved.
 			<?php endif; ?>
 		</div>
-		<!--<div class="copy-right-section">
-		<?php if (get_theme_mod('footer_copyright_content') ) : ?>
-		<?php echo wp_kses_post(get_theme_mod('footer_copyright_content')) ?>
-		<?php else : ?>
-		<?php echo '&copy; '.date_i18n(__('Y','noteblog')); ?> <?php bloginfo( 'name' ); ?>
-		<?php endif; ?>
-		</div>-->
 	</div><!-- .site-info -->
 </footer><!-- #colophon -->
 </div><!-- #page -->

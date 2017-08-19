@@ -67,34 +67,27 @@
         <?php if ( is_front_page() ) { ?>
         <div class="site-header">
           <div class="site-branding"> 
-            <!--<span class="home-link">
-              <?php if (get_theme_mod('hero_image_title') ) : ?>
-              <span class="frontpage-site-title"><?php echo wp_kses_post(get_theme_mod('hero_image_title')) ?></span>
-              <?php else : ?>
-              <span class="frontpage-site-title"><?php bloginfo( 'name' ); ?></span>
-              <?php endif; ?>
-
-            <?php if (get_theme_mod('hero_image_subtitle') ) : ?>
-            <span class="frontpage-site-description"><?php echo wp_kses_post(get_theme_mod('hero_image_subtitle')) ?></span>
-            <?php else : ?>
-            <span class="frontpage-site-description"><?php bloginfo( 'description' ); ?></span>
-            <?php endif; ?>
-            </span>-->
 
           </div><!--.site-branding-->
 
           <div class="container">
             <div id="header-form">
-              <form class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-sm-offset-3 center-block text-left" style="float:none;">
+              <form class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 center-block text-left" style="float:none;">
                   <div id="selection-container">
                     <div class="form-group header-form-group" id="pickup-group">
-                      <label>PICP-UP</label>
-                      <input type="text" id="pickup-input" value="Changi Airport Private Terminal"/>
+                      <div class="align-bottom-sep"></div>
+                      <div>
+                        <label>PICP-UP</label>
+                        <input type="text" id="pickup-input" value="Changi Airport Private Terminal"/>
+                      </div>
                     </div>
 
                     <div class="form-group header-form-group">
-                      <label>DROP-OFF</label>
-                      <input type="text" id="dropoff-input" value="Phuket Island Airport"/>
+                      <div class="align-top-sep"></div>
+                      <div>
+                        <label>DROP-OFF</label>
+                        <input type="text" id="dropoff-input" value="Phuket Island Airport"/>
+                      </div>
                     </div>
 
                     <div class="header-inline-form-group">
@@ -102,7 +95,7 @@
                           <input id="addon" type="hidden"/>
                           <div class="dropdown" style="width:100%; background-color:#F7F9FB ">
                             <button class="btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%;border:none;">
-                              <span class="selection">Dropdown button</span>
+                              <span class="selection">Select Add-on</span>
                               <span class="caret"></span>
                             </button>
                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -143,3 +136,4 @@ jQuery(document).ready(function($) {
   });
 });
 </script>
+
