@@ -260,7 +260,16 @@ function noteblog_footer_widget_right_init() {
 add_action( 'widgets_init', 'noteblog_footer_widget_right_init' );
 
 
+function searchDestination(){
+	global $wpdb;
 
+	$q = "SELECT id, name FROM destination where name like '".$term."%'";
+	$myrows = $wpdb->get_results( $q );
+	echo json_encode($myrows);
+	die();
+}
+add_action('wp_ajax_searchDestination', 'searchDestination');
+add_action('wp_ajax_nopriv_searchDestination', 'searchDestination');
 /**
 *
 * Admin styles
@@ -276,3 +285,10 @@ add_action( 'admin_enqueue_scripts', 'noteblog_load_custom_wp_admin_style' );
 
 add_action( 'customize_controls_print_styles', 'noteblog_customizer_stylesheet' );
 
+
+function add_jquery_ui() {
+	wp_register_style( 'jquery-ui-styles','http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' );
+    wp_enqueue_script('jquery-ui-core');
+    wp_enqueue_script('jquery-ui-autocomplete');
+}
+add_action('wp_enqueue_scripts', 'add_jquery_ui');

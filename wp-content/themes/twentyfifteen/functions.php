@@ -385,6 +385,13 @@ function twentyfifteen_search_form_modify( $html ) {
 }
 add_filter( 'get_search_form', 'twentyfifteen_search_form_modify' );
 
+
+function searchDestination($query){
+	global $wpdb;
+	$myrows = $wpdb->get_results( "SELECT id, name FROM destination" );
+	echo json_encode($myrows);
+	die();
+}
 /**
  * Implement the Custom Header feature.
  *
@@ -405,3 +412,10 @@ require get_template_directory() . '/inc/template-tags.php';
  * @since Twenty Fifteen 1.0
  */
 require get_template_directory() . '/inc/customizer.php';
+
+function add_jquery_ui() {
+	wp_register_style( 'jquery-ui-styles','http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' );
+    wp_enqueue_script('jquery-ui-core');
+    wp_enqueue_script('jquery-ui-autocomplete');
+}
+add_action('wp_enqueue_scripts', 'add_jquery_ui');

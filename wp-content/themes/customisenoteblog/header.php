@@ -78,7 +78,7 @@
                       <div class="align-bottom-sep"></div>
                       <div>
                         <label>PICP-UP</label>
-                        <input type="text" id="pickup-input" value="Changi Airport Private Terminal"/>
+                        <input type="text" class="auto-select" id="pickup-input" value=""/>
                       </div>
                     </div>
 
@@ -86,7 +86,7 @@
                       <div class="align-top-sep"></div>
                       <div>
                         <label>DROP-OFF</label>
-                        <input type="text" id="dropoff-input" value="Phuket Island Airport"/>
+                        <input type="text" class="auto-select" id="dropoff-input" value=""/>
                       </div>
                     </div>
 
@@ -94,8 +94,8 @@
                       <div class="col-sm-6" style="border-right: 1px solid #CCD6DD;">
                           <input id="addon" type="hidden"/>
                           <div class="dropdown" style="width:100%; background-color:#F7F9FB ">
-                            <button class="btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%;border:none;">
-                              <span class="selection">Select Add-on</span>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%; font-weight:normal; border:none;">
+                              <span class="selection">Select Add-on Service</span>
                               <span class="caret"></span>
                             </button>
                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -128,12 +128,84 @@
 <div id="content" class="site-content">
 <script type="text/javascript">
 jQuery(document).ready(function($) {
-  $(".dropdown-menu li a").click(function(){
 
+  function isValidInput(){
+    var validInput = true;
+    if($('#pickup-input').val() == '')
+      validInput = false;
+    if($('#dropoff-input').val() == '')
+      validInput = false;
+    if($('#pickup-date-field').val() == '')
+      validInput = false;
+    return validInput;
+  }
+
+  $(".dropdown-menu li a").click(function(){
     $(this).parents(".dropdown").find('.selection').text($(this).text());
     $(this).parents(".dropdown").find('.selection').val($(this).text());
-
   });
+
+  $(".auto-select").on('click',function(){
+      $(this).select();
+  });
+
+  $(".auto-select").on('focus',function(){
+      $(this).select();
+  });
+
+  $("#sub-btn-container").click(function(){
+    if(isValidInput()){
+      alert('valid input');
+    }else{
+      alert('please check your input');
+    }
+  });
+
+  $('#pickup-input').autocomplete({
+    source: function(request, response){
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php?action=searchDestination',
+        type: 'GET',
+        data: request,
+        success: function(data){
+          var jsonData = JSON.parse(data);
+          response($.map(jsonData, function (el) {
+               return {
+                   label: el.name,
+                   value: el.id
+               };
+           }));
+        }
+      });
+    },
+    select: function(event, ui){
+      this.value = ui.item.label;
+      event.preventDefault();
+    }
+  });
+
+  $('#dropoff-input').autocomplete({
+    source: function(request, response){
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php?action=searchDestination',
+        type: 'GET',
+        data: request,
+        success: function(data){
+          var jsonData = JSON.parse(data);
+          response($.map(jsonData, function (el) {
+               return {
+                   label: el.name,
+                   value: el.id
+               };
+           }));
+        }
+      });
+    },
+    select: function(event, ui){
+      this.value = ui.item.label;
+      event.preventDefault();
+    }
+  });
+
 });
 </script>
-
